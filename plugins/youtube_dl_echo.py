@@ -44,11 +44,11 @@ async def echo(bot, update):
             pablo = await update.reply_text('LK21 link detected')
             time.sleep(2.5)
             if os.path.isdir(folder):
-                await update.reply_text("Don't spam, wait till your previous task done.")
+                await update.reply_text("پس از پایان آپلود دوباره تلاش کنید!")
                 await pablo.delete()
                 return
             os.makedirs(folder)
-            await pablo.edit_text('Downloading...')
+            await pablo.edit_text('در حال دانلود...')
             bypasser = lk21.Bypass()
             xurl = bypasser.bypass_url(url)
             if ' | ' in url:
@@ -74,7 +74,7 @@ async def echo(bot, update):
                 if metadata is not None:
                     if metadata.has("duration"):
                         duration = metadata.get('duration').seconds
-            await pablo.edit_text('Uploading...')
+            await pablo.edit_text('درحال آپلود...')
             start_time = time.time()
             if xfiletype in ['video/mp4', 'video/x-matroska', 'video/webm']:
                 await bot.send_video(
@@ -196,7 +196,7 @@ async def echo(bot, update):
         # https://github.com/rg3/youtube-dl/issues/2630#issuecomment-38635239
         if e_response and "nonnumeric port" not in e_response:
             # logger.warn("Status : FAIL", exc.returncode, exc.output)
-            error_message = e_response.replace("please report this issue on https://yt-dl.org/bug . Make sure you are using the latest version; see  https://yt-dl.org/update  on how to update. Be sure to call youtube-dl with the --verbose flag and include its complete output.", "")
+            error_message = e_response.replace("مشکلی پیش آمده!", "")
             if "This video is only available for registered users." in error_message:
                 error_message += Translation.SET_CUSTOM_USERNAME_PASSWORD
             await bot.send_message(
@@ -297,11 +297,11 @@ async def echo(bot, update):
                     "video", format_id, format_ext)
                 inline_keyboard.append([
                     InlineKeyboardButton(
-                        "SVideo",
+                        "",
                         callback_data=(cb_string_video).encode("UTF-8")
                     ),
                     InlineKeyboardButton(
-                        "DFile",
+                        "",
                         callback_data=(cb_string_file).encode("UTF-8")
                     )
                 ])
@@ -311,11 +311,11 @@ async def echo(bot, update):
                     "video", format_id, format_ext)
                 inline_keyboard.append([
                     InlineKeyboardButton(
-                        "video",
+                        "",
                         callback_data=(cb_string_video).encode("UTF-8")
                     ),
                     InlineKeyboardButton(
-                        "file",
+                        "آپلود فایل",
                         callback_data=(cb_string_file).encode("UTF-8")
                     )
                 ])
