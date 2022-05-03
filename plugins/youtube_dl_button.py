@@ -164,7 +164,7 @@ async def youtube_dl_call_back(bot, update):
     t_response = stdout.decode().strip()
     logger.info(e_response)
     logger.info(t_response)
-    ad_string_to_replace = "please report this issue on https://yt-dl.org/bug . Make sure you are using the latest version; see  https://yt-dl.org/update  on how to update. Be sure to call youtube-dl with the --verbose flag and include its complete output."
+    ad_string_to_replace = "مشکلی پیش آمده!"
     if e_response and ad_string_to_replace in e_response:
         error_message = e_response.replace(ad_string_to_replace, "")
         await bot.edit_message_text(
@@ -325,9 +325,9 @@ async def youtube_dl_call_back(bot, update):
             media_album_p = []
             if images is not None:
                 i = 0
-                caption = "© @xTeamBots"
+                caption = "https://t.me/TeLeech"
                 if is_w_f:
-                    caption = "@xurluploaderbot"
+                    caption = "https://t.me/TeLeech"
                 for image in images:
                     if os.path.exists(str(image)):
                         if i == 0:
